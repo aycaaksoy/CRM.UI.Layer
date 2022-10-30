@@ -17,4 +17,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CRM.Entity.Layer\CRM.Entity.Layer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Concrete\" />
+    <Folder Include="EntityFramework\" />
+  </ItemGroup>
+
 </Project>
