@@ -9,6 +9,6 @@ namespace CRM.DataAccess.Layer.Abstract
 {
     public interface IProductDal: IGenericDal<Product>
     {
-
+        void GetProductByCategory();
     }
 }

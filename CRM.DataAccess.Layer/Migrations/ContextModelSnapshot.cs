@@ -59,6 +59,51 @@ namespace CRM.DataAccess.Layer.Migrations
 
                     b.ToTable("Customers");
                 });
+
+            modelBuilder.Entity("CRM.Entity.Layer.Concrete.Employee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeSurname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmployeeId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("CRM.Entity.Layer.Concrete.Employee", b =>
+                {
+                    b.HasOne("CRM.Entity.Layer.Concrete.Category", "Category")
+                        .WithMany("Employees")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("CRM.Entity.Layer.Concrete.Category", b =>
+                {
+                    b.Navigation("Employees");
+                });
 #pragma warning restore 612, 618
         }
     }

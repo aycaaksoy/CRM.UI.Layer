@@ -1,8 +1,33 @@
-﻿@{
+﻿@model List<CRM.Entity.Layer.Concrete.Category>
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_CRMLayout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<h1>Categories</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Category Name</th>
+        <th>Status</th>
+        <th>Remove</th>
+        <th>Update</th>
+        
+    </tr>
+    
+    @foreach (var item in Model)
+   {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td><a href="#" class="btn btn-warning">Status</a></td>
+            <td><a href="#" class="btn btn-danger">Remove</a></td>
+            <td><a href="#" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+        
+    
+</table>

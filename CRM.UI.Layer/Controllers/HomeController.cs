@@ -1,4 +1,5 @@
-﻿using CRM.UI.Layer.Models;
+﻿using CRM.Business.Layer.Abstract;
+using CRM.UI.Layer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,16 +12,18 @@ namespace CRM.UI.Layer.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //dependency injection
+        private readonly ICategoryService _categoryService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICategoryService categoryService)
         {
-            _logger = logger;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var values = _categoryService.TGetList();
+            return View(values);
         }
 
         public IActionResult Privacy()

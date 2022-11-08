@@ -16,6 +16,7 @@ namespace CRM.DataAccess.Layer.Concrete
             }
             public DbSet<Customer> Customers { get; set; }
             public DbSet<Category> Categories { get; set; }
+            public DbSet<Employee> Employees { get; set; }
     }
     
 }

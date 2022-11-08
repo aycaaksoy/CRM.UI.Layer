@@ -11,6 +11,7 @@ namespace CRM.Entity.Layer.Concrete
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
+        public ICollection<Employee> Employees { get; set; }
 
     }
 }
