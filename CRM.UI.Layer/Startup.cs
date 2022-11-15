@@ -2,6 +2,7 @@ using CRM.Business.Layer.Abstract;
 using CRM.Business.Layer.Concrete;
 using CRM.DataAccess.Layer.Abstract;
 using CRM.DataAccess.Layer.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

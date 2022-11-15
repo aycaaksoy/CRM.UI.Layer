@@ -11,6 +11,8 @@ namespace CRM.Entity.Layer.Concrete
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
+
+        // relationship (many) btw emp (many) and category(one)
         public ICollection<Employee> Employees { get; set; }
 
     }
