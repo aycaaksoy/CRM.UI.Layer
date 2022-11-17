@@ -9,6 +9,8 @@ namespace CRM.DataAccess.Layer.Abstract
 {
     public interface IEmployeeDal : IGenericDal<Employee>
     {
- 
+        List<Employee> GetEmpByCategory();
+        void ChangeEmployeeStatusToTrue(int id);
+        void ChangeEmployeeStatusToFalse(int id);
     }
 }

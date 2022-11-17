@@ -30,6 +30,8 @@ namespace CRM.UI.Layer
         {
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICategoryDal, EFCategoryDal>();
+            services.AddScoped<IEmployeeService, EmployeeManager>();
+            services.AddScoped<IEmployeeDal, EFEmployeeDal>();
             services.AddControllersWithViews();
             
         }

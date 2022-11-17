@@ -20,5 +20,7 @@ namespace CRM.Entity.Layer.Concrete
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public bool EmployeeStatus { get; set; }
     }
 }
