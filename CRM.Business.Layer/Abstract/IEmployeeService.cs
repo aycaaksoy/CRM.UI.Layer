@@ -10,5 +10,7 @@ namespace CRM.Business.Layer.Abstract
     public interface IEmployeeService: IGenericService<Employee>
     {
         List<Employee> TGetEmpByCategory();
+        void TChangeEmployeeStatusToTrue(int id);
+        void TChangeEmployeeStatusToFalse(int id);
     }
 }

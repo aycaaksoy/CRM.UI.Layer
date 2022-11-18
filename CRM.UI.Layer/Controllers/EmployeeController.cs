@@ -56,11 +56,34 @@ namespace CRM.UI.Layer.Controllers
             return RedirectToAction("Index");  
         }
 
+        [HttpGet]
         public IActionResult EditEmployee(int id)
         {
             var values = employeeService.TGetById(id);
-            employeeService.TUpdate(values);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult EditEmployee(Employee employee)
+        {
+            var values = employeeService.TGetById(employee.EmployeeId);
+            employee.EmployeeStatus = values.EmployeeStatus;
+            employeeService.TUpdate(employee);
+            
             return RedirectToAction("Index");
         }
-    } 
+
+        public IActionResult ChangeStatusToFalse(int id)
+        {
+            employeeService.TChangeEmployeeStatusToFalse(id);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ChangeStatusToTrue(int id)
+        {
+            employeeService.TChangeEmployeeStatusToTrue(id);
+            return RedirectToAction("Index");
+        }
+
+
+    }
 }

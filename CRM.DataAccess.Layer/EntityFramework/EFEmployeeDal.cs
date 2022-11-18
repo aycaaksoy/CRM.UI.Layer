@@ -15,12 +15,22 @@ namespace CRM.DataAccess.Layer.EntityFramework
     {
         public void ChangeEmployeeStatusToFalse(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                var values = context.Employees.Find(id);
+                values.EmployeeStatus = false;
+                context.SaveChanges();
+            }
         }
 
         public void ChangeEmployeeStatusToTrue(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                var values = context.Employees.Find(id);
+                values.EmployeeStatus = true;
+                context.SaveChanges();
+            }
         }
 
         public List<Employee> GetEmpByCategory()

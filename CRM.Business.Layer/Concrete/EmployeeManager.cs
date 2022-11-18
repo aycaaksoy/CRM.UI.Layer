@@ -18,6 +18,16 @@ namespace CRM.Business.Layer.Concrete
             this.employeeDal = employeeDal;
         }
 
+        public void TChangeEmployeeStatusToFalse(int id)
+        {
+            employeeDal.ChangeEmployeeStatusToFalse(id);
+        }
+
+        public void TChangeEmployeeStatusToTrue(int id)
+        {
+            employeeDal.ChangeEmployeeStatusToTrue(id);
+        }
+
         public void TDelete(Employee t)
         {
            employeeDal.Delete(t);

@@ -23,7 +23,7 @@
             <td>@item.EmployeeName @item.EmployeeSurname</td>
             <td>@item.Category.CategoryName</td>
             <td><a href="/Employee/DeleteEmployee/@item.EmployeeId" class="btn btn-outline-danger">Delete</a></td>
-            <td><a href="/Employee/UpdateEmployee/@item.EmployeeId" class="btn btn-outline-success">Edit</a></td>
+            <td><a href="/Employee/EditEmployee/@item.EmployeeId" class="btn btn-outline-success">Edit</a></td>
             <td><a href="#" class="btn btn-outline-dark">Tasks</a></td>
             @{
                 if (item.EmployeeStatus == true)
