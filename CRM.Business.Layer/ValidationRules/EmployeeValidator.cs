@@ -15,7 +15,7 @@ namespace CRM.Business.Layer.ValidationRules
             RuleFor(x => x.EmployeeName).NotEmpty().WithMessage("Employee name cannot be empty");
             RuleFor(x => x.EmployeeSurname).NotEmpty().WithMessage("Employee surname cannot be empty");
             RuleFor(x => x.EmployeeName).MinimumLength(2).WithMessage("Should be at least 2 characters long");
-            RuleFor(x => x.EmployeeSurname).MinimumLength(20).WithMessage("Should be at least 20 characters long");
+            RuleFor(x => x.EmployeeSurname).MaximumLength(20).WithMessage("Should be max 20 characters long");
         }
     }
 }

@@ -3,16 +3,22 @@ using CRM.Business.Layer.ValidationRules;
 using CRM.Entity.Layer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CRM.UI.Layer.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService employeeService;
+        private readonly ICategoryService categoryService;
 
-        public EmployeeController(IEmployeeService employeeService)
+    
+        public EmployeeController(IEmployeeService employeeService, ICategoryService categoryService)
         {
             this.employeeService = employeeService;
+            this.categoryService = categoryService;
         }
 
         public IActionResult Index()
@@ -24,6 +30,13 @@ namespace CRM.UI.Layer.Controllers
         [HttpGet]
         public IActionResult AddEmployee()
         {
+            List<SelectListItem> categoryValues = (from x in categoryService.TGetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.v = categoryValues;
             return View();
         }
 
@@ -44,7 +57,6 @@ namespace CRM.UI.Layer.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-
             }
             return View();
         }

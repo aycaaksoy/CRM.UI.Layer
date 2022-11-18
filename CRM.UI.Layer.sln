@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.UI.Layer", "CRM.UI.Laye
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.Entity.Layer", "CRM.Entity.Layer\CRM.Entity.Layer.csproj", "{1DC47B00-F717-49A8-8285-403B72864039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Business.Layer", "CRM.Business.Layer\CRM.Business.Layer.csproj", "{F33AF07F-CEA3-4022-B87D-BB838C652D64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.Business.Layer", "CRM.Business.Layer\CRM.Business.Layer.csproj", "{F33AF07F-CEA3-4022-B87D-BB838C652D64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.DataAccess.Layer", "CRM.DataAccess.Layer\CRM.DataAccess.Layer.csproj", "{8D1740C6-12FA-451E-871F-4DB7975F6142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.DataAccess.Layer", "CRM.DataAccess.Layer\CRM.DataAccess.Layer.csproj", "{8D1740C6-12FA-451E-871F-4DB7975F6142}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

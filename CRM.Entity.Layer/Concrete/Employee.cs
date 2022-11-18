@@ -17,7 +17,7 @@ namespace CRM.Entity.Layer.Concrete
         public string EmployeeImage { get; set; }
 
         //relationship btw emp and category
-        public int CategoryId { get; set; }
+        public int CategoryID { get; set; }
 
         public Category Category { get; set; }
 
