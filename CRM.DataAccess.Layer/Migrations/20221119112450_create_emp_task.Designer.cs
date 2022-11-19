@@ -4,14 +4,16 @@ using CRM.DataAccess.Layer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CRM.DataAccess.Layer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20221119112450_create_emp_task")]
+    partial class create_emp_task
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,59 +200,7 @@ namespace CRM.DataAccess.Layer.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("CRM.Entity.Layer.Concrete.EmployeeTask", b =>
-                {
-                    b.Property<int>("EmployeeTaskID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AppUserID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Details")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("EmployeeTaskID");
-
-                    b.HasIndex("AppUserID");
-
-                    b.ToTable("EmployeesTasks");
-                });
-
-            modelBuilder.Entity("CRM.Entity.Layer.Concrete.EmployeeTaskDetail", b =>
-                {
-                    b.Property<int>("EmployeeTaskDetailID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeTaskID")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmployeeTaskDetailID");
-
-                    b.HasIndex("EmployeeTaskID");
-
-                    b.ToTable("EmployeeTaskDetail");
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -365,28 +315,6 @@ namespace CRM.DataAccess.Layer.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("CRM.Entity.Layer.Concrete.EmployeeTask", b =>
-                {
-                    b.HasOne("CRM.Entity.Layer.Concrete.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("CRM.Entity.Layer.Concrete.EmployeeTaskDetail", b =>
-                {
-                    b.HasOne("CRM.Entity.Layer.Concrete.EmployeeTask", "EmployeeTask")
-                        .WithMany("EmployeeTaskDetails")
-                        .HasForeignKey("EmployeeTaskID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EmployeeTask");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("CRM.Entity.Layer.Concrete.AppRole", null)
@@ -441,11 +369,6 @@ namespace CRM.DataAccess.Layer.Migrations
             modelBuilder.Entity("CRM.Entity.Layer.Concrete.Category", b =>
                 {
                     b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("CRM.Entity.Layer.Concrete.EmployeeTask", b =>
-                {
-                    b.Navigation("EmployeeTaskDetails");
                 });
 #pragma warning restore 612, 618
         }
