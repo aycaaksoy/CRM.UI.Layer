@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CRM.Entity.Layer.Concrete;
 using CRM.DataAccess.Layer.Concrete;
+using CRM.UI.Layer.Models;
 
 namespace CRM.UI.Layer
 {
@@ -34,7 +35,7 @@ namespace CRM.UI.Layer
             services.AddScoped<ICategoryDal, EFCategoryDal>();
             services.AddScoped<IEmployeeService, EmployeeManager>();
             services.AddScoped<IEmployeeDal, EFEmployeeDal>();
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();   
+            services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();   
             services.AddControllersWithViews();
             services.AddDbContext<Context>();
             
