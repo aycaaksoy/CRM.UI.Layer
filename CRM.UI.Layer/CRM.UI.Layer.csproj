@@ -26,4 +26,9 @@
     <ProjectReference Include="..\CRM.Entity.Layer\CRM.Entity.Layer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Employee\Data\" />
+    <Folder Include="Areas\Employee\Models\" />
+  </ItemGroup>
+
 </Project>
