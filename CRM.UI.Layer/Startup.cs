@@ -37,6 +37,8 @@ namespace CRM.UI.Layer
             services.AddScoped<IEmployeeDal, EFEmployeeDal>();
             services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();   
             services.AddControllersWithViews();
+            services.AddScoped<IEmployeeTaskService, EmployeeTaskManager>();
+            services.AddScoped<IEmployeeTaskDal, EFEmployeeTaskDal>();
             services.AddDbContext<Context>();
             
         }

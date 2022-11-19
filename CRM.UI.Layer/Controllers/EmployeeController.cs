@@ -1,6 +1,7 @@
-﻿using CRM.Business.Layer.Abstract;
+﻿
 using CRM.Business.Layer.ValidationRules;
 using CRM.Entity.Layer.Concrete;
+using CRM.Business.Layer.Abstract;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,26 +12,23 @@ namespace CRM.UI.Layer.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly IEmployeeService employeeService;
-        private readonly ICategoryService categoryService;
-
-    
+        private readonly IEmployeeService _employeeService;
+        private readonly ICategoryService _categoryService;
         public EmployeeController(IEmployeeService employeeService, ICategoryService categoryService)
         {
-            this.employeeService = employeeService;
-            this.categoryService = categoryService;
+            _employeeService = employeeService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
         {
-            var values = employeeService.TGetEmpByCategory();
+            var values = _employeeService.TGetEmpByCategory();
             return View(values);
         }
-
         [HttpGet]
         public IActionResult AddEmployee()
         {
-            List<SelectListItem> categoryValues = (from x in categoryService.TGetList()
+            List<SelectListItem> categoryValues = (from x in _categoryService.TGetList()
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,
@@ -40,7 +38,6 @@ namespace CRM.UI.Layer.Controllers
             return View();
         }
 
-
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
         {
@@ -48,7 +45,7 @@ namespace CRM.UI.Layer.Controllers
             ValidationResult result = validationRules.Validate(employee);
             if (result.IsValid)
             {
-                employeeService.TInsert(employee);
+                _employeeService.TInsert(employee);
                 return RedirectToAction("Index");
             }
             else
@@ -63,39 +60,36 @@ namespace CRM.UI.Layer.Controllers
 
         public IActionResult DeleteEmployee(int id)
         {
-            var values= employeeService.TGetById(id);
-            employeeService.TDelete(values);    
-            return RedirectToAction("Index");  
-        }
-
-        [HttpGet]
-        public IActionResult EditEmployee(int id)
-        {
-            var values = employeeService.TGetById(id);
-            return View(values);
-        }
-
-        [HttpPost]
-        public IActionResult EditEmployee(Employee employee)
-        {
-            var values = employeeService.TGetById(employee.EmployeeId);
-            employee.EmployeeStatus = values.EmployeeStatus;
-            employeeService.TUpdate(employee);
-            
+            var values = _employeeService.TGetById(id);
+            _employeeService.TDelete(values);
             return RedirectToAction("Index");
         }
 
         public IActionResult ChangeStatusToFalse(int id)
         {
-            employeeService.TChangeEmployeeStatusToFalse(id);
+            _employeeService.TChangeEmployeeStatusToFalse(id);
             return RedirectToAction("Index");
         }
         public IActionResult ChangeStatusToTrue(int id)
         {
-            employeeService.TChangeEmployeeStatusToTrue(id);
+            _employeeService.TChangeEmployeeStatusToTrue(id);
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult UpdateEmployee(int id)
+        {
+            var values = _employeeService.TGetById(id);
+            return View(values);
+        }
 
+        [HttpPost]
+        public IActionResult UpdateEmployee(Employee employee)
+        {
+            var values = _employeeService.TGetById(employee.EmployeeId);
+            employee.EmployeeStatus = values.EmployeeStatus;
+            _employeeService.TUpdate(employee);
+            return RedirectToAction("Index");
+        }
     }
 }

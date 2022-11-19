@@ -20,7 +20,8 @@ namespace CRM.DataAccess.Layer.Concrete
             public DbSet<Category> Categories { get; set; }
             public DbSet<Employee> Employees { get; set; }
             public DbSet<EmployeeTask> EmployeesTasks { get; set; }
-            
+
+            public DbSet<EmployeeTaskDetail> EmployeeTaskDetails { get; set; }
     }
     
 }

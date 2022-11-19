@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CRM.DataAccess.Layer.EntityFramework
 {
-    public class EfEmployeeTaskDal : GenericRepository<EmployeeTask>, IEmployeeTaskDal
+    public class EFEmployeeTaskDal : GenericRepository<EmployeeTask>, IEmployeeTaskDal
     {
         public List<EmployeeTask> GetEmployeeTaskByEmployee()
         {

@@ -24,7 +24,6 @@ namespace CRM.UI.Layer.Controllers
         {
             var values = _employeeTaskService.TGetEmployeeTaskByEmployee();
             return View(values);
-            //kaggle
         }
         [HttpGet]
         public IActionResult AddTask()
@@ -41,7 +40,7 @@ namespace CRM.UI.Layer.Controllers
         [HttpPost]
         public IActionResult AddTask(EmployeeTask employeeTask)
         {
-            employeeTask.Status = "Görev Atandı";
+            employeeTask.Status = "Task Assigned";
             employeeTask.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             _employeeTaskService.TInsert(employeeTask);
             return RedirectToAction("Index");
