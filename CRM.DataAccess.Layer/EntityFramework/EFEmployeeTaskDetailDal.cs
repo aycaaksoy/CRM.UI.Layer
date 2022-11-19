@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CRM.DataAccess.Layer.EntityFramework
 {
-    public class EFEmployeeTaskDetail : GenericRepository<EmployeeTaskDetail>, IEmployeeTaskDetailDal
+    public class EFEmployeeTaskDetailDal : GenericRepository<EmployeeTaskDetail>, IEmployeeTaskDetailDal
     {
         public List<EmployeeTaskDetail> GetEmployeeTaskDetailById(int id)
         {
