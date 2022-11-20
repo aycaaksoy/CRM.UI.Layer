@@ -1,14 +1,17 @@
 ﻿using CRM.Entity.Layer.Concrete;
 using CRM.UI.Layer.Models;
 using CrmUpSchool.UILayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace CRM.UI.Layer.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
+        
         private readonly UserManager<AppUser> _userManager;
 
         public RegisterController(UserManager<AppUser> userManager)
@@ -21,7 +24,7 @@ namespace CRM.UI.Layer.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Index(AppUser appUser)
         {
