@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 using CRM.Entity.Layer.Concrete;
 using CRM.DataAccess.Layer.Concrete;
 using CRM.UI.Layer.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace CRM.UI.Layer
 {
@@ -41,8 +43,23 @@ namespace CRM.UI.Layer
             services.AddScoped<IEmployeeTaskDal, EFEmployeeTaskDal>();
             services.AddScoped<IEmployeeTaskDetailService, EmployeeTaskDetailManager>();
             services.AddScoped<IEmployeeTaskDetailDal, EFEmployeeTaskDetailDal>();
+            services.AddScoped<IMessageService, MessageManager>();
+            services.AddScoped<IMessageDal, EFMessageDal>();
             services.AddDbContext<Context>();
-            
+            services.AddMvc(config =>
+            {   //enforces user must authenticate
+                var policy = new AuthorizationPolicyBuilder()
+                            .RequireAuthenticatedUser()
+                            .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+
+
+            }); // if user s not logged in , directed to the login page
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/Index";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
