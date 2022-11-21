@@ -24,6 +24,8 @@ namespace CRM.DataAccess.Layer.Concrete
             public DbSet<EmployeeTaskDetail> EmployeeTaskDetails { get; set; }
 
             public DbSet<Message> Messages { get; set; }
+
+            public DbSet<Message> Announcement { get; set; }
     }
     
 }

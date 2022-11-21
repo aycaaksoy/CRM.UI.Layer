@@ -18,6 +18,7 @@ using CRM.DataAccess.Layer.Concrete;
 using CRM.UI.Layer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using CRM.Business.Layer.DIContainer;
 
 namespace CRM.UI.Layer
 {
@@ -33,18 +34,9 @@ namespace CRM.UI.Layer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<ICategoryDal, EFCategoryDal>();
-            services.AddScoped<IEmployeeService, EmployeeManager>();
-            services.AddScoped<IEmployeeDal, EFEmployeeDal>();
+            services.ContainerDependencies();
             services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();   
             services.AddControllersWithViews();
-            services.AddScoped<IEmployeeTaskService, EmployeeTaskManager>();
-            services.AddScoped<IEmployeeTaskDal, EFEmployeeTaskDal>();
-            services.AddScoped<IEmployeeTaskDetailService, EmployeeTaskDetailManager>();
-            services.AddScoped<IEmployeeTaskDetailDal, EFEmployeeTaskDetailDal>();
-            services.AddScoped<IMessageService, MessageManager>();
-            services.AddScoped<IMessageDal, EFMessageDal>();
             services.AddDbContext<Context>();
             services.AddMvc(config =>
             {   //enforces user must authenticate
