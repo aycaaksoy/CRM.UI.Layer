@@ -27,6 +27,8 @@ namespace CRM.Business.Layer.DIContainer
             services.AddScoped<IEmployeeTaskDetailDal, EFEmployeeTaskDetailDal>();
             services.AddScoped<IMessageService, MessageManager>();
             services.AddScoped<IMessageDal, EFMessageDal>();
+            services.AddScoped<ICustomerService, CustomerManager>();
+            services.AddScoped<ICustomerDal, EFCustomerDal>();
         }
     }
 }
