@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.Business.Layer", "CRM.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.DataAccess.Layer", "CRM.DataAccess.Layer\CRM.DataAccess.Layer.csproj", "{8D1740C6-12FA-451E-871F-4DB7975F6142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.DTO.Layer", "CRM.DTO.Layer\CRM.DTO.Layer.csproj", "{C5606B13-B0C9-4161-8756-215C76517A74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8D1740C6-12FA-451E-871F-4DB7975F6142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D1740C6-12FA-451E-871F-4DB7975F6142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D1740C6-12FA-451E-871F-4DB7975F6142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5606B13-B0C9-4161-8756-215C76517A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5606B13-B0C9-4161-8756-215C76517A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5606B13-B0C9-4161-8756-215C76517A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5606B13-B0C9-4161-8756-215C76517A74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

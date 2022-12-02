@@ -26,6 +26,7 @@ namespace CRM.DataAccess.Layer.Concrete
             public DbSet<Message> Messages { get; set; }
 
             public DbSet<Message> Announcement { get; set; }
+            public DbSet<Supplier> Suppliers { get; set; }
     }
     
 }

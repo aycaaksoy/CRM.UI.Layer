@@ -31,6 +31,18 @@
 <div id="customergetbyid">
 
 </div>
+<div>
+    <input type="text" class="form-control" id="txtdeleteid" placeholder="Delete Id" />
+
+</div>
+<br />
+<div class="form-group">
+    <h4>Update your info</h4>
+    <input type="text" class="form-control" id="txtname" placeholder="Delete Name" />
+    <input type="text" class="form-control" id="txtsurname" placeholder="Delete Surname" />
+    <input type="text" class="form-control" id="txtemail" placeholder="Delete email" />
+    <input type="text" class="form-control" id="txtphone" placeholder="Delete phone" />
+</div>
 <script>
 
     $("#btncustomerlist").click(function () {
@@ -91,4 +103,41 @@
             }
         });
     });
+    $("#btncustomerdelete").click(x => {
+        let id = $("#txtdeleteid").val();
+
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "get",
+            url: "/Admin/AdminCustomer/DeleteCustomer/" + id,
+            
+            success: function (funk4) {
+                alert("Customer Deleted Successfully");
+            }
+        });
+    });
+    $("#btncustomerupdate").click(x => {
+        let values = {
+            CustomerName: $("#txtname").val(),
+            CustomerSurname: $("#txtsurname").val(),
+            CustomerEmail: $("#txtemail").val(),
+            CustomerPhone: $("#txtphone").val()
+        };
+
+        $.ajax({
+            
+            type: "get",
+            url: "/Admin/AdminCustomer/UpdateCustomer/",
+            data:values,
+
+            success: function (funk5) {
+                alert("Customer Updated Successfully");
+            }
+        });
+    });
+    $(#idname).click(function (){
+
+
+    })
 </script>
