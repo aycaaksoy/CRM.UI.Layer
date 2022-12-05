@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CRM.Business.Layer\CRM.Business.Layer.csproj" />
     <ProjectReference Include="..\CRM.DataAccess.Layer\CRM.DataAccess.Layer.csproj" />
+    <ProjectReference Include="..\CRM.DTO.Layer\CRM.DTO.Layer.csproj" />
     <ProjectReference Include="..\CRM.Entity.Layer\CRM.Entity.Layer.csproj" />
   </ItemGroup>
 

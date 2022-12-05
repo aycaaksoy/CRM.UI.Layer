@@ -1,4 +1,5 @@
-﻿using CRM.Entity.Layer.Concrete;
+﻿using CRM.Business.Layer.Concrete;
+using CRM.Entity.Layer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,7 @@ namespace CRM.DataAccess.Layer.Concrete
 
             public DbSet<Message> Announcement { get; set; }
             public DbSet<Supplier> Suppliers { get; set; }
+            public DbSet<Contact> Contacts { get; set; }
     }
     
 }
